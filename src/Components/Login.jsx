@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { addUser } from './utils/userSlice';
+import { addUser } from '../utils/userSlice';
+import { BASE_URL } from '../utils/Constants';
 
 const Login = () => {
     const [emailId, setEmailId] = useState("raktimabho112000@gmail.com");
@@ -10,7 +11,7 @@ const Login = () => {
 
     const handleLogin = async () => {
         try {
-            const res = await axios.post('http://localhost:3000/login', {
+            const res = await axios.post(BASE_URL + '/login', {
                 emailId, 
                 password
             }, { 
@@ -32,8 +33,6 @@ const Login = () => {
                     <div>
                         <p>Email ID</p>
                         <label className="input mt-2">
-                            {/* <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg> */}
-
                             <input type="email" className="grow" placeholder="Email Address" onChange={e => setEmailId(e.target.value) } value = { emailId } />
                         </label>
                     </div>
@@ -41,8 +40,6 @@ const Login = () => {
                     <div className='mt-3'>
                         <p>Password</p>
                         <label className="input mt-2">
-                            {/* <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg> */}
-
                             <input type="password" className="grow" placeholder="Password" value={ password } onChange={e => setPassword(e.target.value)} />
                         </label>
                     </div>
@@ -56,4 +53,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;

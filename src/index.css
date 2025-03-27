@@ -1,2 +1,10 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+.dropdown ul li:hover a span {
+    background-color: black;
+}
+
+.dropdown ul li:hover a span {
+    color: white;
+}
