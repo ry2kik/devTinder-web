@@ -3,11 +3,13 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { BASE_URL } from '../utils/Constants';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [emailId, setEmailId] = useState("raktimabho112000@gmail.com");
     const [password, setPassword] = useState("Raktim2000*");
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleLogin = async () => {
         try {
@@ -20,6 +22,7 @@ const Login = () => {
             });
 
             dispatch(addUser(res.data));
+            navigate('/');
         } catch (error) {
             console.error(error);
         }

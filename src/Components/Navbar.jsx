@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import DropdownProfile from "./DropdownProfile";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const user = useSelector(store => store.user);
@@ -10,9 +11,9 @@ const Navbar = () => {
     return (
         <div className="flex justify-between px-10 py-3 items-center bg-base-300 shadow-sm">
             <div>
-                <a>
+                <Link to = '/'>
                     <button className="btn btn-soft btn-accent text-lg">DevTinder</button>
-                </a>
+                </Link>
             </div>
             <div>
                 {
@@ -23,7 +24,7 @@ const Navbar = () => {
                                     initial = {{ opacity: 0, x: 20 }}
                                     animate = {{ opacity: 1, x: 0 }}
                                     transition = {{ duration: 0.5 }}
-                                    className="text-xs text-wrap w-20 text-center">
+                                    className="text-xs text-primary font-medium text-wrap w-20 text-center">
                                         Welcome, { user.firstName }
                                     </motion.p>
 
