@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
@@ -29,7 +30,12 @@ const Login = () => {
     }
 
     return (
-        <div className='flex justify-center mt-10'>
+        <motion.div 
+            initial = {{ opacity: 0, y: -20 }}
+            animate = {{ opacity: 1, y: 0 }}
+            transition = {{ duration: 0.5 }}
+            className='flex justify-center mt-10'
+        >
             <div className="card card-border bg-base-200 w-96 shadow">
                 <div className="card-body">
                     <h2 className="card-title flex justify-center text-2xl">Login</h2>
@@ -52,7 +58,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

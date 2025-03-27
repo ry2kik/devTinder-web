@@ -1,8 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { BASE_URL } from '../utils/Constants';
+import { useDispatch } from 'react-redux';
+import { removeUser } from '../utils/userSlice';
 
 const DropdownProfile = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleLogout = async () => {
+        try {
+            await axios.post(BASE_URL + '/logout', {}, {
+                withCredentials: true
+            });
+            dispatch(removeUser());
+            navigate('/login')
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <div className='absolute right-11 w-48 dropdown'>
             <motion.ul
@@ -19,8 +38,8 @@ const DropdownProfile = () => {
                 <li className='p-2 hover:bg-black/30 rounded'>
                     <Link to="/settings">Settings</Link>
                 </li>
-                <li className='p-2 hover:bg-black/30 rounded'>
-                    <a href="">Logout</a>
+                <li className='p-2 hover:bg-black/30 rounded cursor-pointer' onClick = { handleLogout }>
+                    <p>Logout</p>
                 </li>
             </motion.ul>
         </div>
