@@ -11,7 +11,7 @@ const Navbar = () => {
     return (
         <div className="flex justify-between px-10 py-3 items-center bg-base-300 shadow-sm">
             <div>
-                <Link to = '/'>
+                <Link to = { user ? '/' : '/login' }>
                     <button className="btn btn-soft btn-accent text-lg">DevTinder</button>
                 </Link>
             </div>

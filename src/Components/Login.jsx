@@ -7,8 +7,9 @@ import { BASE_URL } from '../utils/Constants';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    const [emailId, setEmailId] = useState("raktimabho112000@gmail.com");
-    const [password, setPassword] = useState("Raktim2000*");
+    const [emailId, setEmailId] = useState("rahul2024@gmail.com");
+    const [password, setPassword] = useState("Rahul2024*");
+    const [error, setError] = useState();
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -21,11 +22,11 @@ const Login = () => {
                 // ? Pass back the token to the application tab of the browser
                 withCredentials: true 
             });
-
             dispatch(addUser(res.data));
             navigate('/');
         } catch (error) {
-            console.error(error);
+            setError(error?.response?.data?.message);
+            console.log(error);
         }
     }
 
@@ -53,9 +54,12 @@ const Login = () => {
                         </label>
                     </div>
 
+                    <p className='text-red-600'>{ error }</p>
+
                     <div className="card-actions justify-center mt-4">
                         <button className="btn btn-primary" onClick={ handleLogin }>Login</button>
                     </div>
+
                 </div>
             </div>
         </motion.div>
