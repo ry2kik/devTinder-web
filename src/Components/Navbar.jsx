@@ -24,7 +24,7 @@ const Navbar = () => {
                                     initial = {{ opacity: 0, x: 20 }}
                                     animate = {{ opacity: 1, x: 0 }}
                                     transition = {{ duration: 0.5 }}
-                                    className="text-xs text-primary font-medium text-wrap w-20 text-center">
+                                    className="text-xs text-primary font-bold text-wrap w-20 text-center me-3">
                                         Welcome, { user.firstName }
                                     </motion.p>
 
