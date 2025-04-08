@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import EditProfileModal from './EditProfileMOdal';
+import { motion } from 'framer-motion';
+import EditProfileModal from './EditProfileModal';
 
 const EditProfile = ({ user }) => {
     const [showModal, setShowModal] = useState(false);
@@ -7,7 +8,12 @@ const EditProfile = ({ user }) => {
     const closeModal = () => setShowModal(false);
    
     return (
-        <div className='flex justify-center mt-36'>
+        <motion.div 
+            initial = {{ opacity: 0, y: -20 }}
+            animate = {{ opacity: 1, y: 0 }}
+            transition = {{ duration: 1 }}
+            className='flex justify-center mt-36'    
+        >
             <div className='flex justify-between w-lg bg-base-200 shadow p-8 py-12'>
                 <div className='w-4/5'>
                     <div className='absolute'>
@@ -65,7 +71,7 @@ const EditProfile = ({ user }) => {
                     </div>
 
                     {
-                        showModal && <EditProfileModal closeModal = { closeModal } user = { user } />
+                        showModal && <EditProfileModal  closeModal = { closeModal } user = { user } />
                     }
                 </div>
 
@@ -73,7 +79,7 @@ const EditProfile = ({ user }) => {
                     <img src = { user.photoUrl || "https://imgs.search.brave.com/ul1ELzJhn3eDT8eV6L6sFVf3Ca6nEr9s5DHA1JybFYE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5zcHJvdXRzb2Np/YWwuY29tL3VwbG9h/ZHMvMjAyMi8wNi9w/cm9maWxlLXBpY3R1/cmUuanBlZw" } alt="The image not found" className='w-24 h-24 rounded-full' />
                 </div>
             </div>
-        </div>
+        </motion.div>
     )
 }
 

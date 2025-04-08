@@ -8,6 +8,8 @@ const Navbar = () => {
     const user = useSelector(store => store.user);
     const [isOpen, setIsOpen] = useState(false);
 
+    const closeDropdown = () => setIsOpen(false);
+
     return (
         <div className="flex justify-between px-10 py-3 items-center bg-base-300 shadow-sm">
             <div>
@@ -24,7 +26,7 @@ const Navbar = () => {
                                     initial = {{ opacity: 0, x: 20 }}
                                     animate = {{ opacity: 1, x: 0 }}
                                     transition = {{ duration: 0.5 }}
-                                    className="text-xs text-primary font-bold text-wrap w-20 text-center me-3">
+                                    className="text-xs text-primary font-[700] text-wrap w-20 text-center me-3">
                                         Welcome, { user.firstName }
                                     </motion.p>
 
@@ -37,7 +39,7 @@ const Navbar = () => {
                                 />
                             </div>
 
-                            {isOpen && <DropdownProfile />}
+                            {isOpen && <DropdownProfile closeDropdown = { closeDropdown } />}
                         </div>
                     )
                 }

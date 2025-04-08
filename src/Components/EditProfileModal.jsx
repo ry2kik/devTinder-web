@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import { addUser } from '../utils/userSlice';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { BASE_URL } from '../utils/Constants';
 import { useDispatch } from 'react-redux';
 
@@ -27,7 +28,7 @@ const EditProfileModal = ({ closeModal, user }) => {
             }, {
                 withCredentials: true
             });
-            // console.log(res);
+            console.log(res);
 
             dispatch(addUser(res?.data?.data));
         } catch (error) {
@@ -36,7 +37,7 @@ const EditProfileModal = ({ closeModal, user }) => {
     }
 
     return (
-        <>
+        <div>
             <div className='fixed top-0 right-0 bottom-0 left-0 bg-base-100 opacity-50' onClick={closeModal}></div>
             <div className='fixed top-20 w-lg bg-base-300 rounded shadow'>
                 <div className='flex justify-center px-7 py-10'>
@@ -112,7 +113,7 @@ const EditProfileModal = ({ closeModal, user }) => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
