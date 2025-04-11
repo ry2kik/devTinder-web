@@ -42,7 +42,11 @@ const DropdownProfile = ({ closeDropdown }) => {
                     </li>
 
                     <li className='p-2 hover:bg-black/30 rounded' onClick = { closeDropdown }>
-                        <Link to="/settings">Settings</Link>
+                        <Link to="/connections">Connections</Link>
+                    </li>
+
+                    <li className='p-2 hover:bg-black/30 rounded' onClick = { closeDropdown }>
+                        <Link to="/requests">Requests</Link>
                     </li>
 
                     <li className='p-2 hover:bg-black/30 rounded cursor-pointer' onClick={ handleLogout }>
