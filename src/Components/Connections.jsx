@@ -31,9 +31,9 @@ const Connections = () => {
                 <h1 className='flex justify-center mt-10 uppercase text-lg'>Connections</h1>
                 {
                     connections.map(connection => {
-                        const { firstName, lastName, about, skills, photoUrl, gender, age } = connection;
+                        const { _id, firstName, lastName, about, photoUrl, gender, age } = connection;
                         return (
-                            <div className='flex justify-center my-4'>
+                            <div className='flex justify-center my-4' key = { _id }>
                                 <div className='w-1/2 bg-base-300 shadow-md flex p-4 rounded-md'>
                                     <div className='w-1/4'>
                                         <img src={ photoUrl || 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' } alt="The image not found" className='w-24 h-24 rounded-full' />
