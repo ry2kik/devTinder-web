@@ -1,10 +1,11 @@
 import React from 'react';
+import axios from 'axios';
 import { motion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import { BASE_URL } from '../utils/Constants';
 import { useDispatch } from 'react-redux';
 import { removeUser } from '../utils/userSlice';
+import { removeFeed } from '../utils/feedSlice';
 
 const DropdownProfile = ({ closeDropdown }) => {
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ const DropdownProfile = ({ closeDropdown }) => {
                 withCredentials: true
             });
             dispatch(removeUser());
+            dispatch(removeFeed());
             navigate('/login')
         } catch (error) {
             console.error(error);
@@ -34,18 +36,18 @@ const DropdownProfile = ({ closeDropdown }) => {
                     transition={{ duration: 0.5, ease: 'easeInOut' }}
                     className='relative top-5 bg-base-200 rounded px-3 py-2 text-xs transition -translate-3 duration-300 delay-150 ease-in-out'
                 >
-                    <li className='p-2 hover:bg-black/30 rounded-md' onClick = { closeDropdown }>
+                    <li className='p-2 hover:bg-black/30 rounded-md cursor-pointer' onClick = { closeDropdown }>
                         <Link to="/profile" className='flex items-center justify-between'>
                             Profile
                             <span className='px-3 py-1 flex rounded-lg items-center text-xs hover:text-white'>New</span>
                         </Link>
                     </li>
 
-                    <li className='p-2 hover:bg-black/30 rounded' onClick = { closeDropdown }>
+                    <li className='p-2 hover:bg-black/30 rounded cursor-pointer' onClick = { closeDropdown }>
                         <Link to="/connections">Connections</Link>
                     </li>
 
-                    <li className='p-2 hover:bg-black/30 rounded' onClick = { closeDropdown }>
+                    <li className='p-2 hover:bg-black/30 rounded cursor-pointer' onClick = { closeDropdown }>
                         <Link to="/requests">Requests</Link>
                     </li>
 

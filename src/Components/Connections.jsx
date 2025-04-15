@@ -36,7 +36,7 @@ const Connections = () => {
                             <div className='flex justify-center my-4' key = { _id }>
                                 <div className='w-1/2 bg-base-300 shadow-md flex p-4 rounded-md'>
                                     <div className='w-1/4'>
-                                        <img src={ photoUrl || 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' } alt="The image not found" className='w-24 h-24 rounded-full' />
+                                        <img src={ photoUrl || 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' } alt="The image not found" className='w-20 h-20 rounded-full' />
                                     </div>
                                     <div className='w-3/4 flex items-center'>
                                         <div>

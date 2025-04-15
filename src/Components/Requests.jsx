@@ -22,10 +22,10 @@ const Requests = () => {
 
     const reviewRequest = async (status, _id) => {
         try {
-            const res = await axios.post(BASE_URL + `/request/review/${ status }/${ _id }`, {}, {
+            const res = await axios.post(BASE_URL + `/request/review/${status}/${_id}`, {}, {
                 withCredentials: true
             });
-            
+
             dispatch(removeRequest(_id));
         } catch (error) {
             console.log(error);
@@ -44,22 +44,22 @@ const Requests = () => {
                     requests.map(request => {
                         const { firstName, lastName, about, photoUrl, gender, age } = request.fromUserId;
                         return (
-                            <div className='flex items-center justify-center my-4' key = { request._id }>
-                                <div className='w-1/2 bg-base-300 shadow-md flex p-4 rounded-md'>
-                                    <div className='w-1/4'>
-                                        <img src={ photoUrl || 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp' } alt="The image not found" className='w-24 h-24 rounded-full' />
+                            <div className='flex justify-center my-4' key={request._id}>
+                                <div className='w-2xl bg-base-300 shadow-md flex p-4 rounded-md'>
+                                    <div className='flex justify-center items-center w-1/5'>
+                                        <img src={photoUrl || 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp'} alt="The image not found" className='w-20 h-20 rounded-full' />
                                     </div>
-                                    <div className='w-3/4 flex items-center'>
+                                    <div className='flex w-3/5 justify-center items-center'>
                                         <div>
                                             <h1 className='text-primary text-xl font-bold'>{firstName + ' ' + lastName}</h1>
                                             <p className='text-gray-400 text-base'>{age && gender && age + ', ' + gender}</p>
                                             <p className='text-gray-500 text-sm'>{about}</p>
-                                            
-                                            <div className='flex gap-4 mt-2'>
-                                                <button className='btn btn-primary py-2 px-5' onClick={() => reviewRequest('accepted', request._id) }>Confirm</button>
-                                                <button className='btn btn-secondary px-6' onClick={() => reviewRequest('rejected', request._id)}>Delete</button>
-                                            </div>
                                         </div>
+                                    </div>
+
+                                    <div className='flex items-center gap-4 mt-2'>
+                                        <button className='btn btn-primary py-2 px-5' onClick={() => reviewRequest('accepted', request._id)}>Confirm</button>
+                                        <button className='btn btn-secondary px-6' onClick={() => reviewRequest('rejected', request._id)}>Delete</button>
                                     </div>
                                 </div>
                             </div>

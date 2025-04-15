@@ -35,7 +35,7 @@ const Navbar = () => {
                                     animate={{ scale: 1 }}
                                     src = { user.photoUrl }
                                     alt="Tailwind CSS Navbar component"
-                                    className="w-10 h-10 shadow rounded-full" onClick={() => setIsOpen(!isOpen)}
+                                    className="w-10 h-10 shadow rounded-full cursor-pointer" onClick={() => setIsOpen(!isOpen)}
                                 />
                             </div>
 
